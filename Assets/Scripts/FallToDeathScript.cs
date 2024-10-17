@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class FallToDeathScript : MonoBehaviour
 {
+    public GameObject Teleport;
+    public GameObject Player;
     // Start is called before the first frame update
     void Start()
     {
@@ -15,11 +17,11 @@ public class FallToDeathScript : MonoBehaviour
     {
         
     }
-    private void OnTriggerEnter2D(Collider2D other)
+    private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (other.gameObject.tag == "Player")
+        if (collision.gameObject.tag == "Player")
         {
-            Destroy(other.gameObject);
+            Player.transform.position =  Teleport.transform.position;
         }
     }
 }

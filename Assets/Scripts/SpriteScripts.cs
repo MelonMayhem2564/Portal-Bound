@@ -13,6 +13,8 @@ public class SpriteScripts : MonoBehaviour
     HelperTest helper;
     LayerMask groundLayerMask;
     int health;
+    public GameObject Teleport;
+    public GameObject Player;
 
     // Start is called before the first frame update
     void Start()
@@ -97,13 +99,20 @@ public class SpriteScripts : MonoBehaviour
     public void TakeDamage()
     {
         health--;
-        if (health <= 0)
+        if (health == 0)
         {
-            //checkpoint system
+            gameObject.SetActive(false);
         }
     }
     public int GetHealth()
     {
         return health;
+    }
+    private void OnTriggerEnter2D ()
+    {
+        if (Input.GetKey("a"))
+        {
+            Player.transform.position = Teleport.transform.position;
+        }
     }
 }

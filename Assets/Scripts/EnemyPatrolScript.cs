@@ -35,7 +35,7 @@ public class EnemyPatrolScript : MonoBehaviour
 
         //check for enemy walking left and left side not touching a platform
 
-        if (helper.ExtendedRayCollisionCheck(-0.5f, 0) == true)
+        if (helper.ExtendedRayCollisionCheck(-0.5f, 0) == false)
         {
             if (rb.velocity.x < 0)
             {
@@ -43,7 +43,7 @@ public class EnemyPatrolScript : MonoBehaviour
                 helper.FlipObject(false);
             }
         }
-        if (helper.ExtendedRayCollisionCheck(0.5f, 0) == true)
+        if (helper.ExtendedRayCollisionCheck(0.5f, 0) == false)
         {
             if (rb.velocity.x > 0)
             {
