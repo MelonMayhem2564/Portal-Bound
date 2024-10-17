@@ -31,7 +31,7 @@ public class HelperTest : MonoBehaviour
     }
     public bool ExtendedRayCollisionCheck(float xoffs, float yoffs)
     {
-        float rayLength = 0.5f;
+        float rayLength = 0.4f;
         bool hitSomething = false;
         bool isGrounded = false;
         Vector3 offset = new Vector3(xoffs, yoffs, 0);
