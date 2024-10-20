@@ -15,6 +15,7 @@ public class SpriteScripts : MonoBehaviour
     int health;
     public GameObject Teleport;
     public GameObject Player;
+    public GameObject Portal;
 
     // Start is called before the first frame update
     void Start()
@@ -101,18 +102,16 @@ public class SpriteScripts : MonoBehaviour
         health--;
         if (health == 0)
         {
-            gameObject.SetActive(false);
+            Player.transform.position = Teleport.transform.position;
         }
     }
+    public void EndPortal()
+        {
+            gameObject.SetActive(false);
+        }
     public int GetHealth()
     {
         return health;
     }
-    private void OnTriggerEnter2D ()
-    {
-        if (Input.GetKey("a"))
-        {
-            Player.transform.position = Teleport.transform.position;
-        }
-    }
+
 }
