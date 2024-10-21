@@ -6,10 +6,11 @@ public class FallToDeathScript : MonoBehaviour
 {
     public GameObject Teleport;
     public GameObject Player;
+    SpriteScripts ps;
     // Start is called before the first frame update
     void Start()
     {
-        
+
     }
 
     // Update is called once per frame
@@ -21,7 +22,10 @@ public class FallToDeathScript : MonoBehaviour
     {
         if (collision.gameObject.tag == "Player")
         {
+            ps = Player.GetComponent<SpriteScripts>();
+
             Player.transform.position =  Teleport.transform.position;
+            ps.currentHealth = ps.maxHealth;
         }
     }
 }

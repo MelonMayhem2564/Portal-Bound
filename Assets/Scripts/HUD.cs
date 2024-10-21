@@ -1,11 +1,15 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+using TMPro;
 
 public class HUD : MonoBehaviour
 {
-    float currentHealth;
-    int maxHealth = 3;
+    public int health;
+    public TextMeshProUGUI healthUI;
+    public int currentHealth;
+    public int maxHealth = 3;
     bool invincible = false;
     float invincibletimer;
     public GameObject enemy;
@@ -19,13 +23,13 @@ public class HUD : MonoBehaviour
         invincible = false;
         invincibletimer = 0;
         player = GameObject.Find("Player");
-
+        healthUI.text = health.ToString();
     }
 
     // Update is called once per frame
     void Update()
     {
         print("Health = " + player.GetComponent<SpriteScripts>().GetHealth());
+        healthUI.text = "Health : " + player.GetComponent<SpriteScripts>().GetHealth();
     }
-    
 }

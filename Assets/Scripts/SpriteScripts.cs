@@ -12,10 +12,12 @@ public class SpriteScripts : MonoBehaviour
     float speed;
     HelperTest helper;
     LayerMask groundLayerMask;
-    int health;
+    public int currentHealth;
+    public int maxHealth = 3;
     public GameObject Teleport;
     public GameObject Player;
     public GameObject Portal;
+    int flashCounter;
 
     // Start is called before the first frame update
     void Start()
@@ -26,12 +28,15 @@ public class SpriteScripts : MonoBehaviour
         helper = gameObject.AddComponent<HelperTest>();
         speed = 4;
         groundLayerMask = LayerMask.GetMask("Ground");
-        health = 3;
+        currentHealth = maxHealth;
+        flashCounter = 0;
     }
 
     // Update is called once per frame
     void Update()
     {
+        FlashPlayer();
+
         SpriteMove();
         SpriteJump();
         SpriteFalling();
@@ -99,10 +104,13 @@ public class SpriteScripts : MonoBehaviour
     }
     public void TakeDamage()
     {
-        health--;
-        if (health == 0)
+        flashCounter = 2*60;
+        currentHealth--;
+        if (currentHealth == 0)
         {
             Player.transform.position = Teleport.transform.position;
+            currentHealth = maxHealth;
+            flashCounter = 0;
         }
     }
     public void EndPortal()
@@ -111,7 +119,27 @@ public class SpriteScripts : MonoBehaviour
         }
     public int GetHealth()
     {
-        return health;
+        return currentHealth;
+    }
+
+    void FlashPlayer()
+    {
+        if( flashCounter > 0 )
+        {
+            flashCounter--;
+
+            int res = (flashCounter/3) & 1;
+            if( res==0 )
+            {
+                sr.color = Color.white;
+            }
+            else
+            {
+                sr.color = Color.red;
+            }
+
+
+        }
     }
 
 }
