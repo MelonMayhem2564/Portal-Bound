@@ -5,7 +5,7 @@ using UnityEngine;
 public class EnemyPatrolScript : MonoBehaviour
 {
     int enemyDir;
-    float speed = 1.5f;
+    float speed = 2f;
     LayerMask groundLayerMask;
     Rigidbody2D rb;
     HelperTest helper;
