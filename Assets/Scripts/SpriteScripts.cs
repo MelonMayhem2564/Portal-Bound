@@ -111,6 +111,7 @@ public class SpriteScripts : MonoBehaviour
             Player.transform.position = Teleport.transform.position;
             currentHealth = maxHealth;
             flashCounter = 0;
+            sr.color = Color.white;
         }
     }
     public void EndPortal()
