@@ -50,14 +50,14 @@ public class SpriteScripts : MonoBehaviour
         anim.SetBool("walk", false);
 
 
-        if (Input.GetKey("left") == true)
+        if ((Input.GetKey("left") == true) || (Input.GetKey("a") == true))
         {
             rb.velocity = new Vector2(-speed, rb.velocity.y);
             anim.SetBool("walk", true);
             //   sr. flipX = true;
             helper.FlipObject(true);
         }
-        else if (Input.GetKey("right") == true)
+        else if ((Input.GetKey("right") == true) || ( Input.GetKey("d") == true))
         {
             rb.velocity = new Vector2(speed, rb.velocity.y);
             anim.SetBool("walk", true);
@@ -128,7 +128,7 @@ public class SpriteScripts : MonoBehaviour
         {
             flashCounter--;
 
-            int res = (flashCounter/3) & 1;
+            int res = (flashCounter) & 1;
             if( res==0 )
             {
                 sr.color = Color.white;
